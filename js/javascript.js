@@ -14,13 +14,13 @@ myBriefParagraph.innerHTML += myBriefParagraphText[i];
 i++;
 if(i >= myBriefParagraphText.length){
     clearInterval(autoTyping);
-    
+
     myBriefParagraph.innerHTML = myBriefParagraph.innerHTML + " " + myFeatureSpan + " "  + myFeatureSpinner
 }
 },100)
 
 window.onscroll = ()=>{
-    if(window.scrollY >= (featuresSection.offsetTop - 300)){
+    if(window.scrollY >= (featuresSection.scrollHeight - featuresSection.offsetTop)){
         featuresSection.style.opacity = "1";
         featuresSection.style.transform = "scale(1)";
     }else{
