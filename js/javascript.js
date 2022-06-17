@@ -20,7 +20,7 @@ if(i >= myBriefParagraphText.length){
 },100)
 
 window.onscroll = ()=>{
-    if(window.scrollY >= (featuresSection.offsetTop - 200)){
+    if(window.scrollY >= (featuresSection.offsetTop - 300)){
         featuresSection.style.opacity = "1";
         featuresSection.style.transform = "scale(1)";
     }else{
