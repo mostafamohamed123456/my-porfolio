@@ -238,7 +238,7 @@ body{
     font-family:Arial, sans-serif;
     cursor:pointer;
 }
-@media (min-width:465px) and (max-width:690px){
+@media (min-width:360px) and (max-width:765px){
     .nav-bar{
         justify-content:space-between;
         padding:0 25px
