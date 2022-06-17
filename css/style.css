@@ -256,4 +256,7 @@ body{
     .prof-pic{
         display:none;
     }
+    .features-section .page-link{
+        margin-right:0px;
+    }
 }
