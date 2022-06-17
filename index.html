@@ -16,7 +16,7 @@
                 <h3 class="nav-bar-header">my portfolio</h3>
                 <ul class="navigation-bar-list">
                     <li class="navigation-bar-list-items"><a href="">home</a></li>
-                    <li class="navigation-bar-list-items"><a href="">features</a></li>
+                    <li class="navigation-bar-list-items"><a href="#features">features</a></li>
                     <li class="navigation-bar-list-items"><a href="">contact</a></li>
                     <li class="navigation-bar-list-items"><a href="">about me</a></li>
                     <li class="navigation-bar-list-items dropdown dropstart">
@@ -36,7 +36,7 @@
                 <div class="row">
                     <div class="left-section col-sm">
                         <h2 class="my-auto-typing-name">hello it's mostafa mohamed</h2>
-                        <p class="my-brief-paragraph">i'm a front-end developer to see my work you can go to my <span class="feature-word">features</span> <span class="spinner-grow" style="width:2px;background: var(--textColor);border-radius:0px"></span></p>
+                        <p class="my-brief-paragraph"></p>
                         <div class="pagination">
                             <span class="page-item"><a class="page-link" href="https://www.facebook.com/mostafa.abosaba/"><i class="fab fa-facebook-f"></i></a></span>
                             <span class="page-item"><a class="page-link" href="https://twitter.com/mostafa74459923"><i class="fab fa-twitter"></i></a></span>
@@ -47,24 +47,24 @@
                 </div>
             </div>
             <!--Features of Me-->
-            <div class="container features-section">
+            <div class="container features-section" id="features">
                 <h2 class="features-header">features</h2>
                 <P class="features-paragraph">you can access any work of mine to view its code or website itself</P>
                 <div class="pagination justify-content-center">
-                    <span class="page-item"><a class="page-link" href="#">all</a></span>
-                    <span class="page-item"><a class="page-link" href="#">weather</a></span>
-                    <span class="page-item"><a class="page-link" href="#">viewable</a></span>
-                    <span class="page-item"><a class="page-link" href="#">game</a></span>
-                    <span class="page-item"><a class="page-link" href="#">api</a></span>
+                    <span class="page-item"><a class="page-link">all</a></span>
+                    <span class="page-item"><a class="page-link" data-name = "weather">weather</a></span>
+                    <span class="page-item"><a class="page-link" data-name = "projectorena">viewable</a></span>
+                    <span class="page-item"><a class="page-link" data-name = "profiles">api</a></span>
+                    <span class="page-item"><a class="page-link" data-name = "memory-game">game</a></span>
                 </div>
                 <div class="row justify-content-center">
                     <div class="col-sm">
-                        <div class="card-parent">
+                        <div class="card-parent disable-top">
                             <div class="face-card">
                                 <img class="card-header-image" src="images/weather.png" alt="weather-project">
                             </div>
                             <div class="top-face-card">
-                                <h4>Weather App</h4>
+                                <h4 data-name = "weather">Weather App</h4>
                                 <button class="btn-view-website"><i class="fas fa-external-link-alt"></i></button>
                                 <button class="btn-view-code"><i class="fas fa-file-code"></i></button>
                             </div>
@@ -72,11 +72,11 @@
                     </div>
 
                     <div class="col-sm">
-                        <div class="card-parent">
+                        <div class="card-parent disable-top">
                             <div class="face-card"><img class="card-header-image" src="images/projectorena.png" alt="weather-project">
                             </div>
                             <div class="top-face-card">
-                                <h4>projectorena App</h4>
+                                <h4 data-name = "projectorena">projectorena App</h4>
                                 <button class="btn-view-website"><i class="fas fa-external-link-alt"></i></button>
                                 <button class="btn-view-code"><i class="fas fa-file-code"></i></button>
                             </div>
@@ -84,11 +84,11 @@
                     </div>
 
                     <div class="col-sm">
-                        <div class="card-parent">
+                        <div class="card-parent disable-top">
                             <div class="face-card"><img class="card-header-image" src="images/profiles.png" alt="weather-project">
                             </div>
                             <div class="top-face-card">
-                                <h4>profiles App</h4>
+                                <h4 data-name = "profiles">profiles App</h4>
                                 <button class="btn-view-website"><i class="fas fa-external-link-alt"></i></button>
                                 <button class="btn-view-code"><i class="fas fa-file-code"></i></button>
                             </div>
@@ -96,11 +96,11 @@
                     </div>
 
                     <div class="col-sm">
-                        <div class="card-parent">
+                        <div class="card-parent disable-top">
                             <div class="face-card"><img class="card-header-image" src="images/memory game.png" alt="weather-project">
                             </div>
                             <div class="top-face-card">
-                                <h4>memory game App</h4>
+                                <h4 data-name = "memory-game">memory game App</h4>
                                 <button class="btn-view-website"><i class="fas fa-external-link-alt"></i></button>
                                 <button class="btn-view-code"><i class="fas fa-file-code"></i></button>
                             </div>

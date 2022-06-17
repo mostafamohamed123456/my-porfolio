@@ -79,7 +79,7 @@ body{
     border-radius: 50%;
     position: absolute;
     top: 57px;
-    left: 224px;
+    left: 242px;
     z-index: 2;
     cursor:pointer;
 }
@@ -128,12 +128,20 @@ body{
     padding-top:10px;
     font-size:24px
 }
+.spin-style{
+    width:2px;
+    background: var(--textColor);
+    border-radius:0px
+}
 .feature-word{
     color:var(--textColor);
     cursor:pointer;
 }
 .features-section{
     padding-top: 45px;
+    transition: .5s linear all;
+    opacity: 0;
+    transform:scale(.1)
 }
 .features-section .features-header{
     color:var(--textColor);
@@ -195,16 +203,22 @@ body{
     transition-timing-function:linear;
     transition-property:all;
     padding:175px 0;
-    opacity: 0;
-    transform:scale(.5)
+    cursor:pointer
 }
 .features-section .card-parent .top-face-card.active-top{
     opacity:1;
     transform:scale(1);
     z-index:2
 }
+.features-section .card-parent .top-face-card.disable-top{
+    opacity: 0;
+    transform:scale(.1);
+}
 .features-section .card-parent .top-face-card h4{
     text-align: center;
+}
+.features-section .card-parent.hide{
+    display:none;
 }
 .features-section .card-parent .top-face-card button{
     background:hsla(195, 75%, 25%, 0);
@@ -222,6 +236,7 @@ body{
     color:#EEE;
     text-transform:uppercase;
     font-family:Arial, sans-serif;
+    cursor:pointer;
 }
 @media (min-width:465px) and (max-width:690px){
     .nav-bar{
