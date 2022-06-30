@@ -21,14 +21,17 @@ let skillsProgress = document.querySelectorAll(".skills-progress .progress .prog
 let skillsSectionPagination = document.querySelectorAll(".about-me-section .pagination .page-link");
 let skills = document.querySelector(".skills");
 let education = document.querySelector(".education");
-let graduation = document.querySelector(".graduation");
 
 let autoTyping = setInterval(()=>{
     myBriefParagraph.innerHTML += myBriefParagraphText[i];
     i++;
     if(i >= myBriefParagraphText.length){
         clearInterval(autoTyping);
-        myBriefParagraph.innerHTML = myBriefParagraph.innerHTML + " " + myFeatureSpan + " "  + myFeatureSpinner
+        myBriefParagraph.innerHTML = myBriefParagraph.innerHTML + " " + myFeatureSpan + " "  + myFeatureSpinner;
+        let myFeatureSpanBtn = document.querySelector(".feature-word");
+        myFeatureSpanBtn.addEventListener("click",()=>{
+            window.open("#about me","_self");
+        })
     }
 },100)
 
@@ -132,16 +135,52 @@ window.onresize = ()=>{
 }
 
 
-skillsSectionPagination.forEach((pageItem,pageItemIndex)=>{
+
+let progressBarAnimation = ["firstProgressBars","secProgressBars","thirdProgressBars","forthProgressBars"];
+skillsProgress.forEach((skillProgress,skillsProgressIndex)=>{
+    skillProgress.style.animationName = progressBarAnimation[skillsProgressIndex]
+});
+
+let educationChild = document.querySelector(".education");
+
+let eduHeader = document.createElement("header");
+eduHeader.textContent = "Education";
+eduHeader.classList.add("eduHeader");
+educationChild.appendChild(eduHeader);
+
+let leftHand = document.createElement("div");
+leftHand.classList.add("leftHand")
+let rightHand = document.createElement("div");
+rightHand.classList.add("rightHand");
+let bothHand = document.createElement("bothHand");
+bothHand.classList.add("bothHand");
+
+bothHand.appendChild(leftHand);
+bothHand.appendChild(rightHand);
+educationChild.appendChild(bothHand);
+
+let leftHandParagraph = document.createElement("p");
+let leftHandParagraphText = document.createTextNode("Culture and Science City");
+leftHandParagraph.appendChild(leftHandParagraphText);
+leftHandParagraph.setAttribute("class","leftHandText");
+leftHand.appendChild(leftHandParagraph);
+
+let rightHandParagraph = document.createElement("p");
+let rightHandParagraphText = document.createTextNode("Bachelor's degree from the Higher Institute of Computer Science and Information Systems, Department of Information Systems, with a good grade.");
+rightHandParagraph.appendChild(rightHandParagraphText);
+rightHandParagraph.setAttribute("class","rightHandText");
+rightHand.appendChild(rightHandParagraph);
+
+
+skillsSectionPagination.forEach((pageItem)=>{
     pageItem.addEventListener("click",function(){
         aboutMeItems.forEach((aboutItem)=>{
-            console.log(aboutItem.classList.contains(pageItem.textContent))
             if(aboutItem.classList.contains(pageItem.textContent)){
                 aboutItem.style.display = "block";
                 aboutItem.style.opacity = "1";
                 if(aboutItem.classList.contains('skills')){
-                    skillsProgress.forEach((skillProgress)=>{
-                        skillProgress.style.width = skillProgress.previousElementSibling.textContent
+                    skillsProgress.forEach((skillProgress,skillsProgressIndex)=>{
+                        skillProgress.style.animationName = progressBarAnimation[skillsProgressIndex]
                     })
                 }
             }else{
@@ -150,4 +189,4 @@ skillsSectionPagination.forEach((pageItem,pageItemIndex)=>{
             }
         })
     })
-})
+});

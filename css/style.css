@@ -12,6 +12,10 @@
     --textColorHover: #db8f03dd;
     --backgroundColorHover:#10576fde;
     --backgroundColorHoverOpacity:hsla(195, 75%, 25%, 0.7);
+    --firstProgressBar: 90%;
+    --secProgressBar: 80%;
+    --thirdProgressBar: 85%;
+    --forthProgressBar: 60%;
 }
 body{
     background:var(--backgroundColor);
@@ -465,8 +469,105 @@ input[type='submit']:hover{
     background:var(--textColor);
     height:100%;
     transition:all .4s linear;
+    animation-duration: 1s;
+    animation-timing-function:linear;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
 }
-@media screen and (max-width:820px){
+.about-me-section .education{
+    width:100%;
+    display: flex;
+    flex-direction: column;
+    margin: 10px auto;
+}
+.about-me-section .education .eduHeader{
+    width:100%;
+    border-bottom:2px solid var(--textColor);
+    padding:5px;
+    text-transform:uppercase;
+    font-size:19px;
+    margin-bottom:50px;
+    color:#EEE;
+}
+.about-me-section .education .bothHand{
+    width:100%;
+    display: flex;
+    justify-content: space-around; 
+}
+.about-me-section .education .leftHand{
+    width: 36%;
+    position:relative;
+    padding: 0 27px;
+}
+.about-me-section .education .leftHand .leftHandText{
+    width:110%;
+    font-size:17px;
+    color:#EEE;
+}
+.about-me-section .education .rightHand{
+    width: 100%;
+    position:relative;
+    padding: 0 27px;
+}
+.about-me-section .education .rightHand .rightHandText{
+    width:68%;
+    font-size:20px;
+    color:var(--textColor);
+    font-weight:bold;
+}
+
+.about-me-section .education .leftHand::before{
+    content:'';
+    height:141px;
+    position:absolute;
+    right: 80px;
+    text-align: center;
+    width: 2px;
+    background:var(--textColor)
+}
+.about-me-section .education .rightHand::before{
+    content:'';
+    position:absolute;
+    background:var(--textColor);
+    width:15px;
+    height:15px;
+    border-radius:50%;
+    left: -88px;
+}
+
+@keyframes firstProgressBars {
+    from{
+        width:0%;
+    }
+    to{
+        width: var(--firstProgressBar)
+    }
+}
+@keyframes secProgressBars {
+    from{
+        width:0%;
+    }
+    to{
+        width: var(--secProgressBar)
+    }
+}
+@keyframes thirdProgressBars {
+    from{
+        width:0%;
+    }
+    to{
+        width: var(--thirdProgressBar);
+    }
+}
+@keyframes forthProgressBars {
+    from{
+        width:0%;
+    }
+    to{
+        width: var(--forthProgressBar);
+    }
+}
+@media screen and (max-width:960px){
     .nav-bar{
         justify-content:space-between;
         padding:0 25px
@@ -502,5 +603,11 @@ input[type='submit']:hover{
     }
     .contact-section .inputs input, .contact-section .inputs textarea{
         width:100%;
+    }
+    .about-me-section .education .leftHand{
+        width: 100%;
+    }
+    .about-me-section .education .rightHand .rightHandText {
+        width: 112%;
     }
 }
