@@ -523,7 +523,20 @@ input[type='submit']:hover{
     right: 80px;
     text-align: center;
     width: 2px;
-    background:var(--textColor)
+    background:var(--textColor);
+    animation-duration: .7s;
+    animation-timing-function: ease-in-out;
+    animation-fill-mode: forwards;
+    animation-iteration-count: infinite;
+    transition: all .7s linear;
+}
+@keyframes leftHandAnimation{
+    from{
+        opacity: 0;
+    }
+    to{
+        opacity: 1;
+    }
 }
 .about-me-section .education .rightHand::before{
     content:'';
@@ -567,7 +580,65 @@ input[type='submit']:hover{
         width: var(--forthProgressBar);
     }
 }
-@media screen and (max-width:960px){
+@media (min-width:300px) and (max-width:370px){
+    .nav-bar{
+        justify-content:space-between;
+        padding:0 25px
+    }
+    .nav-bar .navigation-bar-list{
+        display: none;
+    }
+    .responsive-btn{
+        display: flex;
+        padding-top: 11px;
+    }
+    .nav-bar .nav-bar-header{
+        padding-top: 8px;
+    }
+    .prof-pic{
+        display:none;
+    }
+    .features-section .page-link{
+        margin-right:0px;
+    }
+    .features-section .card-parent .face-card {
+        width: 92%;
+    }
+    .contact-section form fieldset {
+        padding: 27px;
+    }
+    .contact-section form fieldset legend {
+        top: -22px;
+        margin: 0 auto;
+    }
+    .contact-section form .form-inputs-labels {
+        padding:0px;
+    }
+    .contact-section .labels{
+        display:none;
+    }
+    .contact-section .inputs input, .contact-section .inputs textarea{
+        width:100%;
+    }
+    .about-me-section .education .bothHand{
+        flex-direction:column
+    }
+    .about-me-section .education .rightHand, .about-me-section .education .leftHand{
+        padding: 0px;
+        width: 100%;
+    }
+    .about-me-section .education .rightHand .rightHandText{
+        width:100%;
+    }
+    .about-me-section .education .leftHand .leftHandText{
+        width:100%;
+    }
+    .about-me-section .education .leftHand::before {
+        height: 25px;
+        animation-name: leftHandAnimation;
+    }
+}
+@media (min-width:375px) and (max-width:960px){
     .nav-bar{
         justify-content:space-between;
         padding:0 25px
@@ -604,10 +675,22 @@ input[type='submit']:hover{
     .contact-section .inputs input, .contact-section .inputs textarea{
         width:100%;
     }
-    .about-me-section .education .leftHand{
+    .about-me-section .education .bothHand{
+        flex-direction:column
+    }
+    .about-me-section .education .rightHand, .about-me-section .education .leftHand{
+        padding: 0px;
         width: 100%;
     }
-    .about-me-section .education .rightHand .rightHandText {
-        width: 112%;
+    .about-me-section .education .rightHand .rightHandText{
+        width:100%;
+    }
+    .about-me-section .education .leftHand .leftHandText{
+        width:100%;
+    }
+    .about-me-section .education .leftHand::before {
+        height: 25px;
+        animation-name: leftHandAnimation;
+        right: 154px;
     }
 }
