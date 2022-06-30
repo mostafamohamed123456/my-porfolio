@@ -30,7 +30,7 @@ let autoTyping = setInterval(()=>{
         myBriefParagraph.innerHTML = myBriefParagraph.innerHTML + " " + myFeatureSpan + " "  + myFeatureSpinner;
         let myFeatureSpanBtn = document.querySelector(".feature-word");
         myFeatureSpanBtn.addEventListener("click",()=>{
-            window.open("#about me","_self");
+            window.open("#features","_self");
         })
     }
 },100)
