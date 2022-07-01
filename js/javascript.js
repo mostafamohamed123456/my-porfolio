@@ -106,28 +106,33 @@ if(window.getComputedStyle(responsiveBtn).display === "flex"){
         groupList.classList.add("group-list");
         responsiveGroup.appendChild(groupList);
         navCont.appendChild(responsiveGroup);
-        let getResponsiveGroup = document.querySelector(".responsive-group");
-        let listItems;
+        
         for(let x = 0; x <= 4; x++){
-            listItems = document.createElement("li");
+            let listItems = document.createElement("li");
             groupList.appendChild(listItems);
             listItems.classList.add("listItems")
         }
         let listGroupItems = document.querySelectorAll(".listItems");
         listGroupItems.forEach((listGroupItem, index)=>{
-            for(let i = 0; i < navListItems.length; i++){
-                listGroupItem.textContent = navListItems[index].children[0].textContent;
-                listGroupItem.addEventListener("click",()=>{
-                    navListItems[index].children[0].click();
-                    navCont.removeChild(responsiveGroup)
+            listGroupItem.textContent = navListItems[index].children[0].textContent;
+            listGroupItem.addEventListener("click",()=>{
+                navListItems[index].children[0].click();
+                responsiveGroup.remove();
 
-                })
-            }
-            listGroupItems[4].textContent = "settings"
+            })
+            listGroupItems[4].textContent = "settings";
+            
         });
-        
+        let closeBtn = document.createElement("li");
+        groupList.appendChild(closeBtn);
+        closeBtn.classList.add("closeResponsiveGroup");
+        closeBtn.textContent = "Close X"
+        closeBtn.addEventListener("click",()=>{
+            responsiveGroup.remove()
+        })
     });
 }
+
 window.onresize = ()=>{
     if(navCont.lastElementChild.classList.contains("responsive-group")){
         navCont.lastElementChild.remove()

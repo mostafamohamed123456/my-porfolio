@@ -353,7 +353,21 @@ input[type='submit']:hover{
     cursor:pointer;
     transition:all .5s linear
 }
+.closeResponsiveGroup{
+    text-align: center;
+    text-transform:uppercase;
+    font-size:35px;
+    border-bottom:2px solid var(--textColor);
+    padding:10px;
+    color:#EEE;
+    cursor:pointer;
+    transition:all .5s linear
+}
 .responsive-group .listItems:hover{
+    background:var(--textColor);
+    color:#FFF;
+}
+.closeResponsiveGroup:hover{
     background:var(--textColor);
     color:#FFF;
 }
