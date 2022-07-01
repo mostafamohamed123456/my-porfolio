@@ -371,6 +371,30 @@ input[type='submit']:hover{
     background:var(--textColor);
     color:#FFF;
 }
+.settingsBox{
+    position:relative;
+    width:210px;
+    border-radius:4px;
+    text-align:center;
+    background:var(--textColor);
+    margin: 0px auto;
+    top: -179px;
+}
+.settingsBox .settingsBoxList{
+    list-style-type: none;
+    padding-left: 0px;
+}
+.settingsBox .settingsBoxList .settingsBoxListItems{
+    transition:all .4s linear;
+    border-top:2px solid var(--textColor);
+    color:#EEE;
+    cursor:pointer;
+    padding: 5px;
+    text-transform: uppercase;
+}
+.settingsBox .settingsBoxList .settingsBoxListItems:hover{
+    background:var(--backgroundColor);
+}
 .about-me-section .about-me-header{
     color:var(--textColor);
     padding:10px;

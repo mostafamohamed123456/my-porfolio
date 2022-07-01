@@ -22,6 +22,9 @@ let skillsSectionPagination = document.querySelectorAll(".about-me-section .pagi
 let skills = document.querySelector(".skills");
 let education = document.querySelector(".education");
 
+let backgroundColor = document.documentElement;
+let darkModeBtn = document.querySelector(".dark-mode")
+
 let autoTyping = setInterval(()=>{
     myBriefParagraph.innerHTML += myBriefParagraphText[i];
     i++;
@@ -116,9 +119,41 @@ if(window.getComputedStyle(responsiveBtn).display === "flex"){
         listGroupItems.forEach((listGroupItem, index)=>{
             listGroupItem.textContent = navListItems[index].children[0].textContent;
             listGroupItem.addEventListener("click",()=>{
-                navListItems[index].children[0].click();
-                responsiveGroup.remove();
+                if(listGroupItem.textContent !== "settings"){
+                    navListItems[index].children[0].click();
+                    responsiveGroup.remove();
+                }else{
+                    let settingsBox = document.createElement("div");
+                    settingsBox.classList.add("settingsBox");
 
+                    let settingsBoxList = document.createElement("ul");
+                    settingsBoxList.classList.add("settingsBoxList");
+
+                    settingsBox.appendChild(settingsBoxList);
+                    responsiveGroup.appendChild(settingsBox);
+
+                    for(let y =0; y <= 2; y++){
+                        let settingsBoxListItems = document.createElement("li");
+                        settingsBoxListItems.classList.add("settingsBoxListItems");
+                        settingsBoxList.appendChild(settingsBoxListItems);
+                    }
+                    let settingsBoxListGroup = document.querySelectorAll(".settingsBoxListItems");
+                    settingsBoxListGroup[0].textContent = "change language";
+                    settingsBoxListGroup[1].textContent = "change website view";
+                    settingsBoxListGroup[2].textContent = "dark mode";
+                    //Activate Dark Mode
+                    settingsBoxListGroup[2].addEventListener("click",()=>{
+                        backgroundColor.style.setProperty("--backgroundColor","#111");
+                        darkModeBtn.children[0].classList.toggle("fa-toggle-off");
+                        darkModeBtn.children[0].classList.toggle("fa-toggle-on");
+                        if(darkModeBtn.children[0].classList.contains("fa-toggle-off")){
+                            backgroundColor.style.setProperty("--backgroundColor","#10576f");
+                        }
+                        responsiveGroup.remove();
+                    })
+                }
+                
+                
             })
             listGroupItems[4].textContent = "settings";
             
@@ -195,3 +230,14 @@ skillsSectionPagination.forEach((pageItem)=>{
         })
     })
 });
+
+
+//Dark Mode
+darkModeBtn.addEventListener("click",()=>{
+    backgroundColor.style.setProperty("--backgroundColor","#111");
+    darkModeBtn.children[0].classList.toggle("fa-toggle-off");
+    darkModeBtn.children[0].classList.toggle("fa-toggle-on");
+    if(darkModeBtn.children[0].classList.contains("fa-toggle-off")){
+        backgroundColor.style.setProperty("--backgroundColor","#10576f");
+    }
+})
