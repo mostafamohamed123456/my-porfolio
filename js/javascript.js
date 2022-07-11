@@ -138,17 +138,16 @@ if(window.getComputedStyle(responsiveBtn).display === "flex"){
                         settingsBoxList.appendChild(settingsBoxListItems);
                     }
                     let settingsBoxListGroup = document.querySelectorAll(".settingsBoxListItems");
-                    settingsBoxListGroup[0].textContent = "change language";
+                    settingsBoxListGroup[0].textContent = "Arabic";
                     settingsBoxListGroup[1].textContent = "change website view";
-                    settingsBoxListGroup[2].textContent = "dark mode";
+                    if(darkModeBtn.children[0].classList.contains("fa-toggle-on")){
+                        settingsBoxListGroup[2].textContent = "Reset";
+                    }else{
+                        settingsBoxListGroup[2].textContent = "dark mode";
+                    }
                     //Activate Dark Mode
                     settingsBoxListGroup[2].addEventListener("click",()=>{
-                        backgroundColor.style.setProperty("--backgroundColor","#111");
-                        darkModeBtn.children[0].classList.toggle("fa-toggle-off");
-                        darkModeBtn.children[0].classList.toggle("fa-toggle-on");
-                        if(darkModeBtn.children[0].classList.contains("fa-toggle-off")){
-                            backgroundColor.style.setProperty("--backgroundColor","#10576f");
-                        }
+                        darkModeBtn.click();
                         responsiveGroup.remove();
                     })
                 }
@@ -240,4 +239,92 @@ darkModeBtn.addEventListener("click",()=>{
     if(darkModeBtn.children[0].classList.contains("fa-toggle-off")){
         backgroundColor.style.setProperty("--backgroundColor","#10576f");
     }
+})
+
+//translate into arabic
+let translateArabic = document.querySelector(".lang");
+
+translateArabic.addEventListener("click",()=>{
+    clearInterval(autoTyping);
+    myBriefParagraph.innerHTML = "";
+    translateArabic.classList.toggle("arabic");
+    if(translateArabic.classList.contains("arabic")){
+        translateArabic.textContent = "English";
+        fetch("translateLang.json")
+        .then(
+            (res)=>{
+                let result = res.json()
+                return result;
+            }
+        )
+        .then(
+            (navBarTranslate)=>{
+                navListItems[0].children[0].textContent = navBarTranslate[0].home;
+                navListItems[1].children[0].textContent = navBarTranslate[0].features;
+                navListItems[2].children[0].textContent = navBarTranslate[0].contact;
+                navListItems[3].children[0].textContent = navBarTranslate[0].aboutMe;
+                return navBarTranslate
+            }
+
+        )
+        .then(
+            (translateBriefSection)=>{
+                let myBriefParagraph = document.querySelector(".my-brief-paragraph");
+                let myAutoTypingHead = document.querySelector(".my-auto-typing-name");
+                let myBriefParagraphText = translateBriefSection[1].myBriefParagraph;
+                let i = 0;
+                let myFeatureSpan = "<span class='feature-word'>مميزاتي</span>";
+                let myFeatureSpinner = "<span class='spinner-grow spin-style'></span>"
+                myAutoTypingHead.textContent = translateBriefSection[1].myAutoTypingName
+                
+                let autoTyping = setInterval(()=>{
+                    myBriefParagraph.innerHTML += myBriefParagraphText[i];
+                    i++;
+                    if(i >= myBriefParagraphText.length){
+                        clearInterval(autoTyping);
+                        myBriefParagraph.innerHTML = myFeatureSpinner + " " + myBriefParagraph.innerHTML + " " + myFeatureSpan;
+                        let myFeatureSpanBtn = document.querySelector(".feature-word");
+                        myFeatureSpanBtn.addEventListener("click",()=>{
+                            window.open("#features","_self");
+                        })
+                    }
+                },100);
+                return translateBriefSection;
+            }
+        )
+        .then(
+            (translateFeaturesSection)=>{
+                featuresSection.children[0].textContent = translateFeaturesSection[2].features; 
+                featuresSection.children[1].textContent = translateFeaturesSection[2].featuresParagraph;
+                return translateFeaturesSection; 
+            }
+        )
+        .then(
+            (translateContactSection)=>{
+                let legendTrans = document.querySelector("form legend");
+                let labels = document.querySelectorAll("label");
+                let submitBtn = document.querySelector("input[type='submit']");
+                legendTrans.textContent = translateContactSection[3].contactMeLegend;
+                labels[0].textContent = translateContactSection[3].username
+                labels[1].textContent = translateContactSection[3].password
+                labels[2].textContent = translateContactSection[3].email
+                labels[3].textContent = translateContactSection[3].sendMeMessage
+                submitBtn.setAttribute("value",translateContactSection[3].submit);
+                return translateContactSection;
+            }
+        )
+        .then(
+            (translateAboutMeSection)=>{
+                let aboutMeHeader = document.querySelector(".about-me-header");
+                let aboutMeEducationP = document.querySelector(".rightHandText");
+                let aboutMeEducationCollege = document.querySelector(".leftHandText");
+                aboutMeHeader.textContent = translateAboutMeSection[4].about;
+                aboutMeEducationP.textContent = translateAboutMeSection[4].educationParagraph;
+                aboutMeEducationCollege.textContent = translateAboutMeSection[4].educationCollege;
+            }
+        )
+    }else{
+        window.location.reload();
+    }
+    
 })
