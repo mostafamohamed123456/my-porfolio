@@ -5,7 +5,7 @@ let responsiveBtn = document.querySelector(".responsive-btn");
 let myBriefParagraph = document.querySelector(".my-brief-paragraph");
 let myBriefParagraphText = "i'm a front-end developer to see my work you can go to my";
 let i = 0;
-
+let translateArabic;
 
 let myFeatureSpan = "<span class='feature-word'>features</span>";
 let myFeatureSpinner = "<span class='spinner-grow spin-style'></span>"
@@ -138,13 +138,25 @@ if(window.getComputedStyle(responsiveBtn).display === "flex"){
                         settingsBoxList.appendChild(settingsBoxListItems);
                     }
                     let settingsBoxListGroup = document.querySelectorAll(".settingsBoxListItems");
-                    settingsBoxListGroup[0].textContent = "Arabic";
+                    
                     settingsBoxListGroup[1].textContent = "change website view";
+
+                    if(translateArabic.classList.contains("arabic")){
+                        settingsBoxListGroup[0].textContent = "English";
+                    }else{
+                        settingsBoxListGroup[0].textContent = "العربية";
+                    }
                     if(darkModeBtn.children[0].classList.contains("fa-toggle-on")){
                         settingsBoxListGroup[2].textContent = "Reset";
                     }else{
                         settingsBoxListGroup[2].textContent = "dark mode";
                     }
+                    
+                    //Translate Website
+                    settingsBoxListGroup[0].addEventListener("click",()=>{
+                        translateArabic.click();
+                        responsiveGroup.remove();
+                    })
                     //Activate Dark Mode
                     settingsBoxListGroup[2].addEventListener("click",()=>{
                         darkModeBtn.click();
@@ -242,9 +254,10 @@ darkModeBtn.addEventListener("click",()=>{
 })
 
 //translate into arabic
-let translateArabic = document.querySelector(".lang");
+translateArabic = document.querySelector(".lang");
 
 translateArabic.addEventListener("click",()=>{
+    
     clearInterval(autoTyping);
     myBriefParagraph.innerHTML = "";
     translateArabic.classList.toggle("arabic");
